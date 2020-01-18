@@ -3,6 +3,7 @@
 namespace App\Controller\Api;
 
 use App\Response\ResponseData;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Context\Context;
 use FOS\RestBundle\Controller\ControllerTrait;
@@ -46,5 +47,17 @@ abstract class BaseController
         }
 
         return $this->handleView($view);
+    }
+
+    /**
+     * Returns success message
+     *
+     * @return Response
+     *
+     * @final
+     */
+    protected function createSuccessMessage(): Response
+    {
+        return new JsonResponse(['success' => true]);
     }
 }
